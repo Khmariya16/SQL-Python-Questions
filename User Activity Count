@@ -1,0 +1,21 @@
+Question
+
+--Count the unique activity types for each user, ensuring users with no activities are also included.
+
+--The output should show each user's ID and their activity type count, with zero for users who have no activities.
+
+
+Solution
+--left join to include all users
+--count unique activity types as per question
+--groupby user_id to get count per user
+--order by using user_id
+
+
+
+select u.user_id,
+        count(distinct a.activity_type) as unique_activity_count
+from user_profiles u
+left join activity_log a on u.user_id = a.user_id
+group by u.user_id
+order by u.user_id
