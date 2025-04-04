@@ -1,0 +1,8 @@
+Calculate the average session duration (in seconds) for each session type
+
+select 
+    session_type,
+    avg(extract(epoch from (session_end - session_start))) as avg_session_dur
+from twitch_sessions
+group by session_type
+order by avg_session_dur
