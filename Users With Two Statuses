@@ -1,0 +1,8 @@
+Find users who are both a viewer and streamer
+
+
+SELECT user_id
+FROM twitch_sessions
+WHERE session_type IN ('viewer', 'streamer')
+GROUP BY user_id
+HAVING COUNT(DISTINCT session_type) = 2;
