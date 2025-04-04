@@ -1,0 +1,10 @@
+Return a list of users with status free who didn’t make any calls in Apr 2020.
+
+SELECT u.user_id
+FROM rc_users u
+WHERE u.status = 'free'
+AND u.user_id NOT IN (
+    SELECT DISTINCT c.USER_ID
+    FROM rc_calls c
+    WHERE c.call_date >= '2020-04-01' AND c.call_date < '2020-05-01'
+);
